@@ -11,6 +11,7 @@ services:
     env_file: .env
     volumes:
       - pg_data_production:/var/lib/postgresql/data
+
   backend:
     image: khatkovskii/kittygram_backend
     env_file: .env
@@ -19,12 +20,16 @@ services:
     volumes:
       - static:/static/
       - media:/app/media
+
   frontend:
     env_file: .env
     image: khatkovskii/kittygram_frontend
     command: cp -r /app/build/. /static/
+    depends_on:
+      - backend
     volumes:
       - static:/static
+
   gateway:
     image: khatkovskii/kittygram_gateway
     env_file: .env

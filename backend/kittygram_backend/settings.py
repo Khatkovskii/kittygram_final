@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='any_string')
 
-DEBUG = False
+DEBUG = bool(os.getenv('DEBUG', default='False'))
 
 ALLOWED_HOSTS = ['130.193.52.161', '127.0.0.1', 'localhost', 'kittykitty.ddns.net']
 
@@ -65,9 +65,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
